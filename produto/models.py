@@ -17,7 +17,7 @@ class Produto(models.Model):
     imagem = models.ImageField(upload_to='produto_imagens/%Y/%m/', null=True, blank=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
     preco_marketing = models.FloatField(verbose_name='Preço')
-    preco_marketing_promocional = models.FloatField(verbose_name='Preço promo', default=0)
+    preco_marketing_promocional = models.FloatField(verbose_name='Preço promo', default=0, blank=True)
     tipo = models.CharField(
         default='V',
         max_length=1,
@@ -57,18 +57,20 @@ class Produto(models.Model):
             quality=50
         )
          
-    def save(self,*args, **kwargs):
+    def save(self, *args, **kwargs):
         if not self.slug:
             slug = f'{slugify(self.nome)}'
             self.slug = slug
-        
+
         super().save(*args, **kwargs)
-        
+
+        max_image_size = 800
+
         if self.imagem:
-            self.resize_image(self.imagem, max_image_size=800)
-    
+            self.resize_image(self.imagem, max_image_size)
+
     def __str__(self):
-        return self.nome    
+        return self.nome
     
     
 class Variacao(models.Model):
