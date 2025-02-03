@@ -8,10 +8,6 @@ class ItemPedidoInline(admin.TabularInline):
     
 
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ['usuario', 'total', 'status']
-    search_fields = ['usuario__username', 'status']
-    list_filter = ['status']
-    list_editable = ['status']
     inlines = [
         ItemPedidoInline
     ]
