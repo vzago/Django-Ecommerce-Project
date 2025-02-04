@@ -44,9 +44,6 @@ INSTALLED_APPS = [
     'perfil',
     "crispy_forms",
     "crispy_bootstrap4",
-    
-    # TODO: Remover debug toolbar
-    'debug_toolbar',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
@@ -61,11 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-    
-    
-    # TODO: Remover debug toolbar
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'loja.urls'
@@ -158,10 +151,6 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
 
 SESSION_SAVE_EVERY_REQUEST = False
 
-INTERNAL_IPS = [
-    # TODO Remover debug toolbar
-    '127.0.0.1'
-]
 
 
 #Serializer padrão JSON

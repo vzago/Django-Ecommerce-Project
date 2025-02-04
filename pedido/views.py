@@ -112,6 +112,7 @@ class SalvarPedido(View):
         kwargs={'pk':pedido.pk}
       )
     )
+    
 class Detalhe(DispatchLoginRequiredMixin, DetailView):
     model = Pedido
     context_object_name = 'pedido'
